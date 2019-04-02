@@ -8,17 +8,13 @@ import java.io.IOException;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Address {
     private String street, city;
     private int zipcode;
 
-    public Address() {
-
-    }
-
     public static void main(String[] args) {
         Address a1 = new Address("mercer", "Pune", 111);
-
         System.out.println(a1);
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -33,7 +29,8 @@ public class Address {
 
         // DESER
         try {
-            Address a2 = objectMapper.readValue(sa1, Address.class);
+            String k1 = "{\"street\":\"mercer\",\"city\":\"Pune\",\"zipcode\":111}, \"k1\":100";
+            Address a2 = objectMapper.readValue(k1, Address.class);
             System.out.println(a2);
         } catch (IOException e) {
             e.printStackTrace();
